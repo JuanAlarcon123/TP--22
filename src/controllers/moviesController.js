@@ -75,13 +75,18 @@ const moviesController = {
 
     },
     edit: function(req,res) {
-        let Movie = Movies.findByPk(req.params.id );
+        let Movie = Movies.findByPk(req.params.id,{ //como segundo parametro le pido que incluya la asociacion genre
+            include: [
+                {
+                    association: 'genre'
+                }
+            ]
+        } );
         let allGenres = Genres.findAll({
             order :["name"]
         });
         Promise.all([Movie,allGenres])
         .then(([Movie,allGenres]) => {
-        
            return res.render("moviesEdit",{
             Movie,
             allGenres,

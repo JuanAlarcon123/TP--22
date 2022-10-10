@@ -50,3 +50,20 @@ margin: 10px;
 border-radius: 10px;
 
 }
+.botonn2{
+height: 30px;
+width: 200px;
+padding:20px;
+margin: 10px ;
+border-radius: 10px;
+
+
+}
+
+
+.botonn2:hover{
+background-color: #00B7FF;
+color: black;}
+.botonn2 a:hover{
+  color: black;
+}
