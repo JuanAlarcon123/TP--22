@@ -75,21 +75,20 @@ const moviesController = {
 
     },
     edit: function(req,res) {
-        let Movie = Movies.findByPk(req.params.id,{
-            include : ["genre"]
-        });
+        let Movie = Movies.findByPk(req.params.id );
         let allGenres = Genres.findAll({
             order :["name"]
         });
         Promise.all([Movie,allGenres])
-        .then(([movie,allGenres])=>{
+        .then(([Movie,allGenres]) => {
         
            return res.render("moviesEdit",{
             Movie,
             allGenres,
-            moment 
+            moment : moment 
            })
-        }).catch(error => console.log(error))
+        })
+        .catch(error => console.log(error))
     },
     update: function (req,res) {
         const {title,rating,awards,length,genre_id,release_date}= req.body
